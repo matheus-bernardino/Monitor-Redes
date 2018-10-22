@@ -43,53 +43,17 @@ class Sniffer:
         if(self.ipSrc[packet.ip.src] > self.mostAccSrc[1]):
             self.mostAccSrc = packet.ip.src, self.ipSrc[packet.ip.src]
 
-    def __init__(self):
+    def start(self):
         capture = pyshark.LiveCapture(interface='wlp2s0')
-        capture.sniff(timeout=5)
+        capture.sniff(timeout=1)
         packets = capture._packets
         for packet in packets:
             try:
-                #print (packet)
                 self.getFlowInformation(packet)
                 self.getPacketInformation(packet)
                 self.getMostAccessedIp(packet)
                 self.getMostTransmissorIp(packet)
-                # # print dir(packet.my_layer())
-                # # print (packet.length)
-                # try:
-                #     # if(ipDst.get(packet.ip.dst) == None):
-                #     #     ipDst[packet.ip.dst] = 1
-                #     # else:    
-                #     ipDst[packet.ip.dst]+=1
-                #     # if(ipSrc.get(packet.ip.src) == None):
-                #         # ipSrc[packet.ip.src] = 1
-                #     # else:    
-                #     ipSrc[packet.ip.src]+=1
-
-                #     if(portDst.get(packet[packet.transport_layer].dstport) == None):
-                #         portDst[packet[packet.transport_layer].dstport] = 1
-                #     else:    
-                #         portDst[packet[packet.transport_layer].dstport]+=1
-                #     if(portSrc.get(packet[packet.transport_layer].srcport) == None):
-                #         portSrc[packet[packet.transport_layer].srcport] = 1
-                #     else:    
-                #         portSrc[packet[packet.transport_layer].srcport]+=1
-
-                #     if(ipDst[packet.ip.dst] > mostAccDst[1]):
-                #         mostAccDst = packet.ip.dst, ipDst[packet.ip.dst]
-                #     if(ipSrc[packet.ip.src] > mostAccSrc[1]):
-                #         mostAccSrc = packet.ip.src, ipSrc[packet.ip.src]
-                    
-                #     avgPkg += float(packet.length)
-                #     countPkg+=1
-                #     # print (packet.ip.dst, ": ", ipDst[packet.ip.dst])
-                #     # print (packet.ip.src, ": ", ipSrc[packet.ip.src])
-                #     # print (packet[packet.transport_layer])
-                #     # print (packet[packet.transport_layer].srcport)
-                #     # print (packet[packet.transport_layer].dstport)
-                #     # print (packet.port.src)
-                # except:
-                #     pass
+     
             except:
                 pass
 
@@ -98,12 +62,10 @@ class Sniffer:
         except:
             pass
 
-        print ('Fluxo: ', self.flow)
-        print ('Número de pacotes:', self.countPkg)
-        print ("Média do tamanho dos pacotes: ", self.avgPkg)
-        print ("IP de destino mais acessado: ", self.mostAccDst)
-        print ("IP de origem mais acessado: ", self.mostAccSrc)
-        print ("IPs de destino: ", self.ipDst)
-        print ("IPs de origem: ", self.ipSrc)
-
-sniffer = Sniffer()
+        # print ('Fluxo: ', self.flow)
+        # print ('Número de pacotes:', self.countPkg)
+        # print ("Média do tamanho dos pacotes: ", self.avgPkg)
+        # print ("IP de destino mais acessado: ", self.mostAccDst)
+        # print ("IP de origem mais acessado: ", self.mostAccSrc)
+        # print ("IPs de destino: ", self.ipDst)
+        # print ("IPs de origem: ", self.ipSrc)
