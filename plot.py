@@ -32,7 +32,7 @@ class Plot:
             pass
 
         
-        # Faz a mesma configuração do plot acima para as informações gerais
+        # Faz a mesma configuração do plot acima para as informações gerais dos pacotes
         fig = plt.figure(1)
         fig.patch.set_visible(False)
         plt.axis('off')
@@ -56,6 +56,7 @@ class Plot:
             tb.set_fontsize(6)
         except:
             pass
+
 
         # Plota ambos os gráficos
         if(Sniffer.countPkg > 0):
