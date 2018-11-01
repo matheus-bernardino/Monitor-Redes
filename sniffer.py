@@ -54,7 +54,7 @@ class Sniffer:
             self.mostAccDst = packet.ip.dst, self.ipDst[packet.ip.dst]
 
     # Faz o mesmo que o método anterior mas para o IP transmissor
-    def getMostTransmissorIp(self, packet):
+    def getMostTransmitterIp(self, packet):
         if(self.ipSrc[packet.ip.src] > self.mostAccSrc[1]):
             self.mostAccSrc = packet.ip.src, self.ipSrc[packet.ip.src]
 
@@ -72,8 +72,7 @@ class Sniffer:
                 self.getFlowInformation(packet)
                 self.getPacketInformation(packet)
                 self.getMostAccessedIp(packet)
-                self.getMostTransmissorIp(packet)
-     
+                self.getMostTransmitterIp(packet)
             except:
                 pass
 

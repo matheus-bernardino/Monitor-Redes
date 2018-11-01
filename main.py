@@ -6,7 +6,7 @@ def main():
     sniffer = Sniffer()   
     sniffer.start()
     plt = Plot()
-    plt.dino_plot(sniffer)
+    plt.plotTables(sniffer)
 
 
 if __name__ == '__main__':

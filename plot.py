@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 
 # Plota as tabelas com os resultados do monitoramento:
 class Plot:
-    def dino_plot(self, Sniffer):
+    # 
+    def plotTables(self, Sniffer):
         # Configuração do plot dos fluxos identificados
         fig = plt.figure(0)
         fig.patch.set_visible(False)
@@ -38,8 +39,8 @@ class Plot:
         plt.axis('off')
         plt.title('General Information')
 
-        columns = ('Number of Packets', 'Average Packets Size', 'Destination IP Most Accesd',
-                   'Source IP Most Accesd')
+        columns = ('Number of Packets', 'Average Packets Size', 'Destination IP Most Accessed',
+                   'Source IP Most Transmitter')
         
         
         cell_text = []
